@@ -6,6 +6,7 @@
     <th>Owner</th>
     <th>Start time</th>
     <th>End time</th>
+    <th>Password</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= game.owner_id %></td>
     <td><%= game.start_time %></td>
     <td><%= game.end_time %></td>
+    <td><%= game.password %></td>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>

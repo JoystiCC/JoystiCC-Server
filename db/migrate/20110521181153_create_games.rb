@@ -5,6 +5,7 @@ class CreateGames < ActiveRecord::Migration
       t.int :owner_id
       t.int :start_time
       t.int :end_time
+      t.string :password
 
       t.timestamps
     end

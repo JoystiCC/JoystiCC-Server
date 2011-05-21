@@ -5,9 +5,11 @@ one:
   owner_id: 
   start_time: 
   end_time: 
+  password: MyString
 
 two:
   name: MyString
   owner_id: 
   start_time: 
   end_time: 
+  password: MyString
