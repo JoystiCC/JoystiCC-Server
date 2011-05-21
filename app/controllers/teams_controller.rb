@@ -42,6 +42,11 @@ class TeamsController < ApplicationController
     end
   end
 
+  def score
+    @team = Team.find(params[:id])
+    
+  end
+
   # DELETE /teams/1
   # DELETE /teams/1.xml
   def destroy
