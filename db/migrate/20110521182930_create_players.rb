@@ -4,8 +4,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :username
       t.string :email
       t.string :password
-      t.int :team_id
-      t.int :direction
+      t.integer :team_id
+      t.integer :direction
 
       t.timestamps
     end

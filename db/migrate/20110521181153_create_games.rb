@@ -2,9 +2,9 @@ class CreateGames < ActiveRecord::Migration
   def self.up
     create_table :games do |t|
       t.string :name
-      t.int :owner_id
-      t.int :start_time
-      t.int :end_time
+      t.integer :owner_id
+      t.integer :start_time
+      t.integer :end_time
       t.string :password
 
       t.timestamps
