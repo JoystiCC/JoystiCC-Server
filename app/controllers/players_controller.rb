@@ -18,6 +18,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
+        @player.key = @player.access_key
         format.xml  { render :xml => @player, :status => :created, :location => @player }
         format.json  { render :json => @player, :status => :created, :location => @player }
       else
