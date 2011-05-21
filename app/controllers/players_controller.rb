@@ -51,26 +51,25 @@ class PlayersController < ApplicationController
   def join_team
     @player = Player.find(params[:id])
 
-    if @player.access_key != params[:access_key]
-      head :unauthorized
-    end
+    if @player.access_key == params[:access_key] then
+      @team = Team.find(params[:team_id])
 
-    @team = Team.find(params[:team_id])
-
-    if @team.game.password == params[:game_password]
-      @player.team_id = @team.id
+      if @team.game.password == params[:game_password]
+        @player.team_id = @team.id
+        respond_to do |format|
+          if @player.save
+            format.xml  { render :xml => @player }
+            format.json  { render :json => @player }
+          else
+            format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
+            format.json  { render :json => @player.errors, :status => :unprocessable_entity }
+          end
+        end
+      else
+        head :unauthorized
+      end
     else
       head :unauthorized
-    end
-
-    respond_to do |format|
-      if @player.save
-        format.xml  { render :xml => @player }
-        format.json  { render :json => @player }
-      else
-        format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
-        format.json  { render :json => @player.errors, :status => :unprocessable_entity }
-      end
     end
   end
 
@@ -79,7 +78,7 @@ class PlayersController < ApplicationController
   def destroy
     @player = Player.find(params[:id])
 
-    if @player.access_key == params[:access_key]
+    if @player.access_key == params[:access_key] then
       @player.destroy
       respond_to do |format|
         format.xml  { head :ok }
