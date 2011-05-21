@@ -1,4 +1,6 @@
 LiveGame::Application.routes.draw do
+  resources :teams
+
   resources :games
 
   # The priority is based upon order of creation:

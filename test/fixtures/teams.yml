@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  game_id: 
+  controller_id: 
+  name: MyString
+
+two:
+  game_id: 
+  controller_id: 
+  name: MyString
