@@ -35,15 +35,16 @@ class PlayersController < ApplicationController
 
     if @player.access_key != params[:access_key]
       head :unauthorized
-    end
+    else 
 
-    respond_to do |format|
-      if @player.update_attributes(params[:player])
-        format.xml  { head :ok }
-        format.json { head :ok }
-      else
-        format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
-        format.json  { render :json => @player.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @player.update_attributes(params[:player])
+          format.xml  { head :ok }
+          format.json { head :ok }
+        else
+          format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
+          format.json  { render :json => @player.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
