@@ -1,15 +1,4 @@
 class PlayersController < ApplicationController
-  # GET /players
-  # GET /players.xml
-  def index
-    @players = Player.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @players }
-      format.json  { render :json => @players }
-    end
-  end
 
   # GET /players/1
   # GET /players/1.xml
@@ -85,7 +74,7 @@ class PlayersController < ApplicationController
     else
       head :unauthorized
     end
-    
+
     respond_to do |format|
       if @player.save
         format.html { redirect_to(@player, :notice => 'Player has successfully joined a team.') }
