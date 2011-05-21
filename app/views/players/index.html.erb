@@ -6,6 +6,7 @@
     <th>Email</th>
     <th>Password</th>
     <th>Team</th>
+    <th>Direction</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= player.email %></td>
     <td><%= player.password %></td>
     <td><%= player.team_id %></td>
+    <td><%= player.direction %></td>
     <td><%= link_to 'Show', player %></td>
     <td><%= link_to 'Edit', edit_player_path(player) %></td>
     <td><%= link_to 'Destroy', player, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -5,9 +5,11 @@ one:
   email: MyString
   password: MyString
   team_id: 
+  direction: 
 
 two:
   username: MyString
   email: MyString
   password: MyString
   team_id: 
+  direction: 
