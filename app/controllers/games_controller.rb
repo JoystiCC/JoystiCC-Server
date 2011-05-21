@@ -6,8 +6,8 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @games }
-      format.json { render :json => @games }
+      format.xml  { render :xml => @games, :exclude_attribute => :password }
+      format.json { render :json => @games, :exclude_attribute => :password }
     end
   end
 
@@ -18,26 +18,9 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @game }
-      format.json { render :json => @game }
+      format.xml  { render :xml => @game, :exclude_attribute => :password }
+      format.json { render :json => @game, :exclude_attribute => :password }
     end
-  end
-
-  # GET /games/new
-  # GET /games/new.xml
-  def new
-    @game = Game.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @game }
-      format.json { render :json => @game }
-    end
-  end
-
-  # GET /games/1/edit
-  def edit
-    @game = Game.find(params[:id])
   end
 
   # POST /games
@@ -63,6 +46,10 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
 
+    if @game.password != params[:game_password]
+      head :unauthorized
+    end
+
     respond_to do |format|
       if @game.update_attributes(params[:game])
         format.html { redirect_to(@game, :notice => 'Game was successfully updated.') }
@@ -80,7 +67,12 @@ class GamesController < ApplicationController
   # DELETE /games/1.xml
   def destroy
     @game = Game.find(params[:id])
-    @game.destroy
+
+    if @game.password != params[:game_password]
+      head :unauthorized
+    else
+      @game.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(games_url) }

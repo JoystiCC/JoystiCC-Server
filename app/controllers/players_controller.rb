@@ -12,23 +12,6 @@ class PlayersController < ApplicationController
     end
   end
 
-  # GET /players/new
-  # GET /players/new.xml
-  def new
-    @player = Player.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @player }
-      format.json  { render :json => @player }
-    end
-  end
-
-  # GET /players/1/edit
-  def edit
-    @player = Player.find(params[:id])
-  end
-
   # POST /players
   # POST /players.xml
   def create
