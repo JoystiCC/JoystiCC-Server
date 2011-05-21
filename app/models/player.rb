@@ -6,7 +6,7 @@ class Player < ActiveRecord::Base
 	validates_presence_of :username
     validate :ensure_team_exists
   	def create
-    	self.access_key = (0..64).to_a.map{|a| rand(64).to_s(64)}.join
+    	self.access_key = ActiveSupport::SecureRandom.hex(32)
     	super
   	end
 	def ensure_team_exists
