@@ -79,11 +79,7 @@ class PlayersController < ApplicationController
   def join_team
     @player = Player.find(params[:id])
 
-    @team = Team.find(params[:team_id])
-
-    if @team.valid?
-      @player.team_id = @team.id
-    end
+    @player.team_id = params[:team_id]
 
     respond_to do |format|
       if @player.save
