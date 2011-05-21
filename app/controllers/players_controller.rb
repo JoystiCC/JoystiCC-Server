@@ -18,9 +18,8 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
-        @player.key = @player.access_key
-        format.xml  { render :xml => @player, :status => :created, :location => @player }
-        format.json  { render :json => @player, :status => :created, :location => @player }
+        format.xml  { render :xml => @player, :status => :created, :location => @player, :include => :access_key }
+        format.json  { render :json => @player, :status => :created, :location => @player, :include => :access_key }
       else
         format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
         format.json  { render :json => @player.errors, :status => :unprocessable_entity }

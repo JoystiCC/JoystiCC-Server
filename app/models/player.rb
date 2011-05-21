@@ -4,6 +4,7 @@ class Player < ActiveRecord::Base
 	has_many :playerscores
 
 	validates_presence_of :username
+	validates_uniqueness_of :username
     validate :ensure_team_exists
   	def create
     	self.access_key = ActiveSupport::SecureRandom.hex(32)
