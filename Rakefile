@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-LiveGame::Application.load_tasks
+JoystiCC::Application.load_tasks

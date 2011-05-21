@@ -1,4 +1,4 @@
-LiveGame::Application.routes.draw do
+JoystiCC::Application.routes.draw do
   resources :players
 
   resources :teams
