@@ -19,4 +19,14 @@ class Team < ActiveRecord::Base
 	def ensure_controller_exists
     	errors.add(:controller,'must exist') unless self.controller
   	end
+
+  	def to_json(options={})
+    	options[:except] ||= [:password, :access_key]
+    	super(options)
+  	end
+
+	def to_xml(options={})
+    	options[:except] ||= [:password, :access_key]
+    	super(options)
+  	end
 end

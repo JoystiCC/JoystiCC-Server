@@ -4,4 +4,14 @@ class Game < ActiveRecord::Base
 
 	validates_presence_of :password, :name
 	validates_associated :owner, :teams
+	
+  	def to_json(options={})
+    	options[:except] ||= [:password, :access_key]
+    	super(options)
+  	end
+
+	def to_xml(options={})
+    	options[:except] ||= [:password, :access_key]
+    	super(options)
+  	end
 end

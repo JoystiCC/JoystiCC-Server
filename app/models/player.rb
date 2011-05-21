@@ -10,4 +10,14 @@ class Player < ActiveRecord::Base
 	def ensure_team_exists
     	errors.add(:team,'must exist') unless self.team
   	end
+  
+	def to_json(options={})
+    	options[:except] ||= [:password, :access_key]
+    	super(options)
+  	end
+
+	def to_xml(options={})
+    	options[:except] ||= [:password, :access_key]
+    	super(options)
+  	end
 end
