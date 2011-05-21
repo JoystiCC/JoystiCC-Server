@@ -78,9 +78,14 @@ class PlayersController < ApplicationController
 
   def join_team
     @player = Player.find(params[:id])
+    @team = Team.find(params[:team_id])
 
-    @player.team_id = params[:team_id]
-
+    if @team.game.password == params[:game_password]
+      @player.team_id = @team.id
+    else
+      head :unauthorized
+    end
+    
     respond_to do |format|
       if @player.save
         format.html { redirect_to(@player, :notice => 'Player has successfully joined a team.') }
