@@ -4,6 +4,7 @@ class Player < ActiveRecord::Base
 	has_many :playerscores
 
 	validates_presence_of :username
+	validates_presence_of :access_key
     validate :ensure_team_exists
 
 	def ensure_team_exists

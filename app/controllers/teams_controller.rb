@@ -1,16 +1,4 @@
 class TeamsController < ApplicationController
-  # GET /teams
-  # GET /teams.xml
-  def index
-    @teams = Team.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @teams }
-      format.json  { render :json => @teams }
-    end
-  end
-
   # GET /teams/1
   # GET /teams/1.xml
   def show
@@ -18,26 +6,9 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @team }
-      format.json  { render :json => @team }
+      format.xml  { render :xml => @team, :include => :players }
+      format.json  { render :json => @team, :include => :players }
     end
-  end
-
-  # GET /teams/new
-  # GET /teams/new.xml
-  def new
-    @team = Team.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @team }
-      format.json  { render :json => @team }
-    end
-  end
-
-  # GET /teams/1/edit
-  def edit
-    @team = Team.find(params[:id])
   end
 
   # POST /teams

@@ -7,8 +7,8 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @player }
-      format.json  { render :json => @player }
+      format.xml  { render :xml => @player, :exclude => :access_key }
+      format.json  { render :json => @player, :exclude => :access_key }
     end
   end
 
@@ -35,6 +35,10 @@ class PlayersController < ApplicationController
   def update
     @player = Player.find(params[:id])
 
+    if @player.access_key != params[:access_key]
+      head :unauthorized
+    end
+
     respond_to do |format|
       if @player.update_attributes(params[:player])
         format.html { redirect_to(@player, :notice => 'Player was successfully updated.') }
@@ -50,6 +54,11 @@ class PlayersController < ApplicationController
 
   def join_team
     @player = Player.find(params[:id])
+
+    if @player.access_key != params[:access_key]
+      head :unauthorized
+    end
+
     @team = Team.find(params[:team_id])
 
     if @team.game.password == params[:game_password]
@@ -61,8 +70,8 @@ class PlayersController < ApplicationController
     respond_to do |format|
       if @player.save
         format.html { redirect_to(@player, :notice => 'Player has successfully joined a team.') }
-        format.xml  { render :xml => @player }
-        format.json  { render :json => @player }
+        format.xml  { render :xml => @player, :exclude => :access_key }
+        format.json  { render :json => @player, :exclude => :access_key }
       else
         format.html { render :action => "join_team" }
         format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
@@ -75,7 +84,12 @@ class PlayersController < ApplicationController
   # DELETE /players/1.xml
   def destroy
     @player = Player.find(params[:id])
-    @player.destroy
+
+    if @player.access_key != params[:access_key]
+      head :unauthorized
+    else
+      @player.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(players_url) }
