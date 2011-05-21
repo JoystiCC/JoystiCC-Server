@@ -33,10 +33,7 @@ class PlayersController < ApplicationController
   def update
     @player = Player.find(params[:id])
 
-    if @player.access_key != params[:access_key]
-      head :unauthorized
-    else 
-
+    if @player.access_key == params[:access_key] then
       respond_to do |format|
         if @player.update_attributes(params[:player])
           format.xml  { head :ok }
@@ -46,6 +43,8 @@ class PlayersController < ApplicationController
           format.json  { render :json => @player.errors, :status => :unprocessable_entity }
         end
       end
+    else
+      head :unauthorized
     end
   end
 
@@ -80,15 +79,16 @@ class PlayersController < ApplicationController
   def destroy
     @player = Player.find(params[:id])
 
-    if @player.access_key != params[:access_key]
-      head :unauthorized
-    else
+    if @player.access_key == params[:access_key]
       @player.destroy
+      respond_to do |format|
+        format.xml  { head :ok }
+        format.json { head :ok }
+      end
+    else
+      head :unauthorized
     end
 
-    respond_to do |format|
-      format.xml  { head :ok }
-      format.json { head :ok }
-    end
+
   end
 end
