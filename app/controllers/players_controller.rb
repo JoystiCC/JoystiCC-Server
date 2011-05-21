@@ -7,8 +7,8 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @player, :exclude => :access_key }
-      format.json  { render :json => @player, :exclude => :access_key }
+      format.xml  { render :xml => @player, :except => [:access_key,:password] }
+      format.json  { render :json => @player, :except => [:access_key,:password] }
     end
   end
 
@@ -70,8 +70,8 @@ class PlayersController < ApplicationController
     respond_to do |format|
       if @player.save
         format.html { redirect_to(@player, :notice => 'Player has successfully joined a team.') }
-        format.xml  { render :xml => @player, :exclude => :access_key }
-        format.json  { render :json => @player, :exclude => :access_key }
+        format.xml  { render :xml => @player, :except => [:access_key,:password] }
+        format.json  { render :json => @player, :except => [:access_key,:password] }
       else
         format.html { render :action => "join_team" }
         format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }

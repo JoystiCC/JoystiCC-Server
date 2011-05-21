@@ -6,8 +6,8 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @games, :exclude_attribute => :password }
-      format.json { render :json => @games, :exclude_attribute => :password }
+      format.xml  { render :xml => @games, :except => :password }
+      format.json { render :json => @games, :except => :password }
     end
   end
 
@@ -18,8 +18,8 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @game, :exclude_attribute => :password }
-      format.json { render :json => @game, :exclude_attribute => :password }
+      format.xml  { render :xml => @game, :except => :password }
+      format.json { render :json => @game, :except => :password }
     end
   end
 
