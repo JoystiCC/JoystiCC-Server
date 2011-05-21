@@ -3,4 +3,9 @@ class Player < ActiveRecord::Base
 	has_one :game, :through => :team
 
 	validates_presence_of :username
+    validate :ensure_team_exists
+
+	def ensure_team_exists
+    	errors.add(:team,'must exist') unless self.team
+  	end
 end

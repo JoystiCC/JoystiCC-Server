@@ -76,6 +76,28 @@ class PlayersController < ApplicationController
     end
   end
 
+  def join_team
+    @player = Player.find(params[:id])
+
+    @team = Team.find(params[:team_id])
+
+    if @team.valid?
+      @player.team_id = @team.id
+    end
+
+    respond_to do |format|
+      if @player.save
+        format.html { redirect_to(@player, :notice => 'Player has successfully joined a team.') }
+        format.xml  { render :xml => @player }
+        format.json  { render :json => @player }
+      else
+        format.html { render :action => "join_team" }
+        format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @player.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /players/1
   # DELETE /players/1.xml
   def destroy
