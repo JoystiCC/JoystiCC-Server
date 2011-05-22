@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
 	belongs_to :game
-	has_one :leader, :class_name => "Player"
+	belongs_to :leader, :class_name => "Player"
 	has_many :players
 	has_many :playerscores
 
