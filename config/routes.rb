@@ -5,7 +5,7 @@ JoystiCC::Application.routes.draw do
 
   resources :games
 
-  match 'players/join_team/:id(.:format)}' => 'players#join_team', :via => 'post'
+  match 'players/join_team/:id(.:format)}' => 'players#join_team', :via => :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
