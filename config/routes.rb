@@ -5,6 +5,10 @@ JoystiCC::Application.routes.draw do
 
   resources :games
 
+  get 'web/api'
+
+  match 'api' => 'web#api'
+
   match 'players/join_team/:id(.:format)' => 'players#join_team', :via => :post
 
   # The priority is based upon order of creation:
