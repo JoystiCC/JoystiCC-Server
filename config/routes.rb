@@ -5,6 +5,8 @@ JoystiCC::Application.routes.draw do
 
   resources :games
 
+  match 'players/join_team/:id' => 'players#join_team'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
