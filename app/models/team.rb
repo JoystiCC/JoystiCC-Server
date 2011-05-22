@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
 	validates_associated :leader
 	validates_presence_of :name
 
-    validate :ensure_controller_exists
+    validate :ensure_leader_exists
     validate :ensure_game_exists
 
 	def ensure_leader_exists
