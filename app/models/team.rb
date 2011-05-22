@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
 	belongs_to :game
 	belongs_to :leader, :class_name => "Player"
 	has_many :players
-	has_many :playerscores
+	has_many :player_scores
 
 	validates_associated :leader
 	validates_presence_of :name
