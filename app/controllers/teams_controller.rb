@@ -13,19 +13,24 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.xml
   def create
-    @team = Team.new
-    @team.name = params[:name]
-    @team.game_id = params[:game_id]
-    @team.controller_id = params[:controller_id]
+    @game = Game.find(params[:game_id])
+    if @game.password == params[:game_password] then
+      @team = Team.new
+      @team.name = params[:name]
+      @team.game_id = params[:game_id]
+      @team.controller_id = params[:controller_id]
 
-    respond_to do |format|
-      if @team.save
-        format.xml  { render :xml => @team, :status => :created, :location => @team }
-        format.json  { render :json => @team, :status => :created, :location => @team }
-      else
-        format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
-        format.json  { render :json => @team.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @team.save
+          format.xml  { render :xml => @team, :status => :created, :location => @team }
+          format.json  { render :json => @team, :status => :created, :location => @team }
+        else
+          format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
+          format.json  { render :json => @team.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      head :unauthorized
     end
   end
 
@@ -33,17 +38,22 @@ class TeamsController < ApplicationController
   # PUT /teams/1.xml
   def update
     @team = Team.find(params[:id])
-    @team.name = params[:name]
-    @team.controller_id = params[:controller_id]
+    @player = Player.find(params[:player_id])
+    if @player.access_key == params[:access_key] && (@team.controller_id == @player.id || @team.game.owner_id == @player.id) then
+      @team.name = params[:name]
+      @team.controller_id = params[:controller_id]
 
-    respond_to do |format|
-      if @team.save
-        format.xml  { head :ok }
-        format.json  { head :ok }
-      else
-        format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
-        format.json  { render :json => @team.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @team.save
+          format.xml  { head :ok }
+          format.json  { head :ok }
+        else
+          format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
+          format.json  { render :json => @team.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      head :unauthorized
     end
   end
 
@@ -51,11 +61,16 @@ class TeamsController < ApplicationController
   # DELETE /teams/1.xml
   def destroy
     @team = Team.find(params[:id])
-    @team.destroy
+    @player = Player.find(params[:player_id])
+    if @player.access_key == params[:access_key] && (@team.controller_id == @player.id || @team.game.owner_id == @player.id) then
+      @team.destroy
 
-    respond_to do |format|
-      format.xml  { head :ok }
-      format.json { head :ok }
+      respond_to do |format|
+        format.xml  { head :ok }
+        format.json { head :ok }
+      end
+    else
+      head :unauthorized
     end
   end
 end
