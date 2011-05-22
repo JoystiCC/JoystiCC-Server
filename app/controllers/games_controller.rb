@@ -5,8 +5,8 @@ class GamesController < ApplicationController
     @games = Game.all
 
     respond_to do |format|
-      format.xml  { render :xml => @games }
-      format.json { render :json => @games }
+      format.xml  { render :xml => @games, :include => :teams }
+      format.json { render :json => @games, :include => :teams }
     end
   end
 
@@ -16,15 +16,18 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
 
     respond_to do |format|
-      format.xml  { render :xml => @game }
-      format.json { render :json => @game }
+      format.xml  { render :xml => @game, :include => :teams }
+      format.json { render :json => @game, :include => :teams }
     end
   end
 
   # POST /games
   # POST /games.xml
   def create
-    @game = Game.new(params[:game])
+    @game = Game.new
+    @game.name = params[:name]
+    @game.owner_id = params[:owner_id]
+    @game.password = params[:password]
 
     respond_to do |format|
       if @game.save
@@ -42,18 +45,20 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
 
-    if @game.password != params[:game_password]
-      head :unauthorized
-    end
-
-    respond_to do |format|
-      if @game.update_attributes(params[:game])
-        format.xml  { head :ok }
-        format.json  { head :ok }
-      else
-        format.xml  { render :xml => @game.errors, :status => :unprocessable_entity }
-        format.json  { render :json => @game.errors, :status => :unprocessable_entity }
+    if @game.password == params[:password]
+      @game.name = params[:name]
+      @game.owner_id = params[:owner_id]
+      respond_to do |format|
+        if @game.save
+          format.xml  { head :ok }
+          format.json  { head :ok }
+        else
+          format.xml  { render :xml => @game.errors, :status => :unprocessable_entity }
+          format.json  { render :json => @game.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      head :unauthorized
     end
   end
 
@@ -62,15 +67,14 @@ class GamesController < ApplicationController
   def destroy
     @game = Game.find(params[:id])
 
-    if @game.password != params[:game_password]
-      head :unauthorized
-    else
+    if @game.password == params[:password]
       @game.destroy
-    end
-
-    respond_to do |format|
-      format.xml  { head :ok }
-      format.json { head :ok }
+      respond_to do |format|
+        format.xml  { head :ok }
+        format.json { head :ok }
+      end
+    else
+      head :unauthorized
     end
   end
 end

@@ -14,7 +14,11 @@ class PlayersController < ApplicationController
   # POST /players
   # POST /players.xml
   def create
-    @player = Player.new(params[:player])
+    @player = Player.new
+    @player.username = params[:username]
+    @player.password = params[:password]
+    @player.email = params[:email]
+    @player.direction = params[:direction]
 
     respond_to do |format|
       if @player.save
@@ -34,8 +38,11 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
 
     if @player.access_key == params[:access_key] then
+      @player.password = params[:password]
+      @player.email = params[:email]
+      @player.direction = params[:direction]
       respond_to do |format|
-        if @player.update_attributes(params[:player])
+        if @player.save
           format.xml  { head :ok }
           format.json { head :ok }
         else

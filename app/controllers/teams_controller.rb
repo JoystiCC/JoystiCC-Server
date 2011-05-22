@@ -13,7 +13,10 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.xml
   def create
-    @team = Team.new(params[:team])
+    @team = Team.new
+    @team.name = params[:name]
+    @team.game_id = params[:game_id]
+    @team.controller_id = params[:controller_id]
 
     respond_to do |format|
       if @team.save
@@ -30,9 +33,11 @@ class TeamsController < ApplicationController
   # PUT /teams/1.xml
   def update
     @team = Team.find(params[:id])
-
+    @team.name = params[:name]
+    @team.controller_id = params[:controller_id]
+    
     respond_to do |format|
-      if @team.update_attributes(params[:team])
+      if @team.save
         format.xml  { head :ok }
         format.json  { head :ok }
       else
@@ -44,7 +49,7 @@ class TeamsController < ApplicationController
 
   def score
     @team = Team.find(params[:id])
-    
+
   end
 
   # DELETE /teams/1
