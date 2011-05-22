@@ -83,7 +83,7 @@ class PlayersController < ApplicationController
   def score
     @player = Player.find(params[:id])
     @leader = Player.find(params[:leader_id])
-    if @player.team && @player.team.leader_id == @leader.id && @leader.access_key == params[:access_key] then
+    if @player.team.leader_id == @leader.id && @leader.access_key == params[:access_key] then
       @playerscore = PlayerScore.new
       @playerscore.points = params[:points]
       @playerscore.team_id = @player.team_id
