@@ -18,12 +18,16 @@ class TeamsController < ApplicationController
       @team = Team.new
       @team.name = params[:name]
       @team.game_id = params[:game_id]
-      @team.leader_id = params[:leader_id]
+      
+      @leader = Player.find(params[:leader_id])
+      @team.leader_id = @leader.id
 
       respond_to do |format|
         if @team.save
           format.xml  { render :xml => @team, :status => :created, :location => @team }
           format.json  { render :json => @team, :status => :created, :location => @team }
+          @leader.team_id = @team.id
+          @leader.save
         else
           format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
           format.json  { render :json => @team.errors, :status => :unprocessable_entity }
