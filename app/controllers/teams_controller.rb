@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
       @team = Team.new
       @team.name = params[:name]
       @team.game_id = params[:game_id]
-      @team.controller_id = params[:controller_id]
+      @team.leader_id = params[:leader_id]
 
       respond_to do |format|
         if @team.save
@@ -39,9 +39,9 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     @player = Player.find(params[:player_id])
-    if @player.access_key == params[:access_key] && (@team.controller_id == @player.id || @team.game.owner_id == @player.id) then
+    if @player.access_key == params[:access_key] && (@team.leader_id == @player.id || @team.game.owner_id == @player.id) then
       @team.name = params[:name]
-      @team.controller_id = params[:controller_id]
+      @team.leader_id = params[:leader_id]
 
       respond_to do |format|
         if @team.save
@@ -62,7 +62,7 @@ class TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     @player = Player.find(params[:player_id])
-    if @player.access_key == params[:access_key] && (@team.controller_id == @player.id || @team.game.owner_id == @player.id) then
+    if @player.access_key == params[:access_key] && (@team.leader_id == @player.id || @team.game.owner_id == @player.id) then
       @team.destroy
 
       respond_to do |format|
