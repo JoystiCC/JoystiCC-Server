@@ -1,69 +1,71 @@
-<h1><a href="https://github.com/JoystiCC">Check us out on GitHub</a></h1>
-<br><br><h1>Create a Player</h1>
-<h2>POST to http://joysti.cc/players.json - <b>username</b> is required</h2>
-<script src="https://gist.github.com/985047.js?file=gistfile1.json"></script>
-<h2>Response - <b>key</b> is needed for updating user/team/game details</h2>
-<script src="https://gist.github.com/985057.js?file=gistfile1.json"></script>
-<br><br>
-<h1>Update a Player</h1>
-<h2>PUT to http://joysti.cc/players/{id}.json - <b>access_key</b>  is required</h2>
-<script src="https://gist.github.com/985066.js?file=gistfile1.json"></script>
-<h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect</h2>
-<br><br>
-<h1>Delete a Player</h1>
-<h2>DELETE to http://joysti.cc/players/{id}.json - <b>access_key</b> is required</h2>
-<script src="https://gist.github.com/985073.js?file=gistfile1.json"></script>
-<h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect</h2>
-<h1>Get a Player</h1>
-<h2>GET to http://joysti.cc/players/{id}.json</h2>
-<script src="https://gist.github.com/985087.js?file=gistfile1.json"></script>
-<h1>Add a Player to a Team</h1>
-<h2>POST to http://joysti.cc/players/{player id}/join_team.json - <b>access_key</b>, <b>game_password</b>, and <b>team_id</b> are required</h2>
-<script src="https://gist.github.com/985116.js?file=gistfile1.json"></script>
-<h2>Response</h2>
-<script src="https://gist.github.com/985117.js?file=gistfile1.json"></script>
-<br><br>
-<h1>Add Score Points to a Player</h1>
-<h2>POST to http://joysti.cc/players/{player id}/score.json - <b>leader_id</b>, <b>access_key</b>, and <b>points</b> are required where access_key is the key for the team leader and the player is on this leader's team</h2>
-<script src="https://gist.github.com/985135.js?file=gistfile1.json"></script>
-<h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if leader does not lead player's team</h2>
-<br><br><hr><br><br>
-<h1>Create a Team</h1>
-<h2>POST to http://joysti.cc/teams.json - <b>game_password</b>, <b>game_id</b>, <b>name</b>, and <b>leader_id</b> are required - <b>leader_id</b> must reference a valid Player and <b>game_id</b> must reference a valid Game</h2>
-<script src="https://gist.github.com/985085.js?file=gistfile1.json"></script>
-<h2>Response</h2>
-<script src="https://gist.github.com/985086.js?file=gistfile1.json"></script>
-<br><br>
-<h1>Update a Team</h1>
-<h2>PUT to http://joysti.cc/teams/{id}.json - <b>player_id</b> and <b>access_key</b> are required for verification - <b>player_id</b> must reference either the team leader or game owner</h2>
-<script src="https://gist.github.com/985095.js?file=gistfile1.json"></script>
-<h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if player is not team leader or game owner</h2>
-<br><br>
-<h1>Delete a Team</h1>
-<h2>DELETE to http://joysti.cc/teams/{id}.json - <b>player_id</b> and <b>access_key</b> are required for verification - <b>player_id</b> must reference either the team leader or game owner</h2>
-<script src="https://gist.github.com/985096.js?file=gistfile1.json"></script>
-<h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if player does not have permissions</h2>
-<br><br>
-<h1>Get a Team</h1>
-<h2>GET to http://joysti.cc/teams/{id}.json</h2>
-<script src="https://gist.github.com/985118.js?file=gistfile1.json"></script>
-<br><br><hr><br><br>
-<h1>Create a Game</h1>
-<h2>POST to http://joysti.cc/games.json - <b>name</b>, <b>password</b>, and <b>owner_id</b> are required - <b>owner_id</b> must reference a valid Player</h2>
-<script src="https://gist.github.com/985076.js?file=gistfile1.json"></script>
-<h2>Response</h2>
-<script src="https://gist.github.com/985078.js?file=gistfile1.json"></script>
-<br><br>
-<h1>Update a Game</h1>
-<h2>PUT to http://joysti.cc/games/{id}.json - <b>player_id</b> and <b>access_key</b> are required for verification - <b>player_id</b> must reference game owner</h2>
-<script src="https://gist.github.com/985122.js?file=gistfile1.json"></script>
-<h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if player_id!=owner_id</h2>
-<br><br>
-<h1>Delete a Game</h1>
-<h2>DELETE to http://joysti.cc/games/{id}.json - <b>player_id</b> and <b>access_key</b> are required for verification - <b>player_id</b> must reference game owner</h2>
-<script src="https://gist.github.com/985123.js?file=gistfile1.json"></script>
-<h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if player_id!=owner_id</h2>
-<br><br>
-<h1>Get a Game</h1>
-<h2>GET to http://joysti.cc/games/{id}.json</h2>
-<script src="https://gist.github.com/985124.js?file=gistfile1.json"></script>
+<div class="content">
+  <h1><a href="https://github.com/JoystiCC">Check us out on GitHub</a></h1>
+  <br><br><h1>Create a Player</h1>
+  <h2>POST to http://joysti.cc/players.json - <b>username</b> is required</h2>
+  <script src="https://gist.github.com/985047.js?file=gistfile1.json"></script>
+  <h2>Response - <b>key</b> is needed for updating user/team/game details</h2>
+  <script src="https://gist.github.com/985057.js?file=gistfile1.json"></script>
+  <br><br>
+  <h1>Update a Player</h1>
+  <h2>PUT to http://joysti.cc/players/{id}.json - <b>access_key</b>  is required</h2>
+  <script src="https://gist.github.com/985066.js?file=gistfile1.json"></script>
+  <h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect</h2>
+  <br><br>
+  <h1>Delete a Player</h1>
+  <h2>DELETE to http://joysti.cc/players/{id}.json - <b>access_key</b> is required</h2>
+  <script src="https://gist.github.com/985073.js?file=gistfile1.json"></script>
+  <h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect</h2>
+  <h1>Get a Player</h1>
+  <h2>GET to http://joysti.cc/players/{id}.json</h2>
+  <script src="https://gist.github.com/985087.js?file=gistfile1.json"></script>
+  <h1>Add a Player to a Team</h1>
+  <h2>POST to http://joysti.cc/players/{player id}/join_team.json - <b>access_key</b>, <b>game_password</b>, and <b>team_id</b> are required</h2>
+  <script src="https://gist.github.com/985116.js?file=gistfile1.json"></script>
+  <h2>Response</h2>
+  <script src="https://gist.github.com/985117.js?file=gistfile1.json"></script>
+  <br><br>
+  <h1>Add Score Points to a Player</h1>
+  <h2>POST to http://joysti.cc/players/{player id}/score.json - <b>leader_id</b>, <b>access_key</b>, and <b>points</b> are required where access_key is the key for the team leader and the player is on this leader's team</h2>
+  <script src="https://gist.github.com/985135.js?file=gistfile1.json"></script>
+  <h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if leader does not lead player's team</h2>
+  <br><br><hr><br><br>
+  <h1>Create a Team</h1>
+  <h2>POST to http://joysti.cc/teams.json - <b>game_password</b>, <b>game_id</b>, <b>name</b>, and <b>leader_id</b> are required - <b>leader_id</b> must reference a valid Player and <b>game_id</b> must reference a valid Game</h2>
+  <script src="https://gist.github.com/985085.js?file=gistfile1.json"></script>
+  <h2>Response</h2>
+  <script src="https://gist.github.com/985086.js?file=gistfile1.json"></script>
+  <br><br>
+  <h1>Update a Team</h1>
+  <h2>PUT to http://joysti.cc/teams/{id}.json - <b>player_id</b> and <b>access_key</b> are required for verification - <b>player_id</b> must reference either the team leader or game owner</h2>
+  <script src="https://gist.github.com/985095.js?file=gistfile1.json"></script>
+  <h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if player is not team leader or game owner</h2>
+  <br><br>
+  <h1>Delete a Team</h1>
+  <h2>DELETE to http://joysti.cc/teams/{id}.json - <b>player_id</b> and <b>access_key</b> are required for verification - <b>player_id</b> must reference either the team leader or game owner</h2>
+  <script src="https://gist.github.com/985096.js?file=gistfile1.json"></script>
+  <h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if player does not have permissions</h2>
+  <br><br>
+  <h1>Get a Team</h1>
+  <h2>GET to http://joysti.cc/teams/{id}.json</h2>
+  <script src="https://gist.github.com/985118.js?file=gistfile1.json"></script>
+  <br><br><hr><br><br>
+  <h1>Create a Game</h1>
+  <h2>POST to http://joysti.cc/games.json - <b>name</b>, <b>password</b>, and <b>owner_id</b> are required - <b>owner_id</b> must reference a valid Player</h2>
+  <script src="https://gist.github.com/985076.js?file=gistfile1.json"></script>
+  <h2>Response</h2>
+  <script src="https://gist.github.com/985078.js?file=gistfile1.json"></script>
+  <br><br>
+  <h1>Update a Game</h1>
+  <h2>PUT to http://joysti.cc/games/{id}.json - <b>player_id</b> and <b>access_key</b> are required for verification - <b>player_id</b> must reference game owner</h2>
+  <script src="https://gist.github.com/985122.js?file=gistfile1.json"></script>
+  <h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if player_id!=owner_id</h2>
+  <br><br>
+  <h1>Delete a Game</h1>
+  <h2>DELETE to http://joysti.cc/games/{id}.json - <b>player_id</b> and <b>access_key</b> are required for verification - <b>player_id</b> must reference game owner</h2>
+  <script src="https://gist.github.com/985123.js?file=gistfile1.json"></script>
+  <h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if player_id!=owner_id</h2>
+  <br><br>
+  <h1>Get a Game</h1>
+  <h2>GET to http://joysti.cc/games/{id}.json</h2>
+  <script src="https://gist.github.com/985124.js?file=gistfile1.json"></script>
+</div>

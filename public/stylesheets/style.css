@@ -39,6 +39,12 @@ body {margin:0px; background:url('../images/thestory.jpg') center top no-repeat 
   margin: 0 auto;
   width: 960px;
 }
+.content {
+  background:#fff;
+}
+.content h1,.content h2,.content h3,.content h4 {
+  font-family: 'ChunkFive',serif;
+}
 #top_content {
   width:100%;
   height:34px;
