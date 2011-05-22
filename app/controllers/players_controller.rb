@@ -56,8 +56,6 @@ class PlayersController < ApplicationController
   end
 
   def join_team
-    Rails.logger.info("PARAMS: #{params.inspect}")
-
     @player = Player.find(params[:id])
 
     if @player.access_key == params[:access_key] then
