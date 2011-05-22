@@ -25,7 +25,7 @@ h1, h2, h3, h4 {
 /* Class for clearing floats */
 .clear {clear:both;}
 
-body {margin:0px; background:url('images/thestory.jpg') center top no-repeat #242424;
+body {margin:0px; background:url('../images/thestory.jpg') center top no-repeat #242424;
   font-family:lucida Grande, helvetica, sans-serif;
 
 }
@@ -35,7 +35,7 @@ body {margin:0px; background:url('images/thestory.jpg') center top no-repeat #24
   margin-top: 5px;
 }
 #container {
-  background: #DDD url('images/body.png');
+  background: #DDD url('../images/body.png');
   margin: 0 auto;
   width: 960px;
 }
@@ -73,7 +73,7 @@ body {margin:0px; background:url('images/thestory.jpg') center top no-repeat #24
   clear:both;
 }
 .logo {
-  background: url("images/joystic_logo.png") no-repeat scroll center 5px transparent;
+  background: url("../images/joystic_logo.png") no-repeat scroll center 5px transparent;
   height: 114px;
   margin: 0 auto;
   text-align: center;
@@ -105,7 +105,7 @@ body {margin:0px; background:url('images/thestory.jpg') center top no-repeat #24
   text-shadow: 0 0 4px #000000;
 }
 #grass {
-  background: url("images/grass_texture.png") no-repeat scroll 0 0 transparent;
+  background: url("../images/grass_texture.png") no-repeat scroll 0 0 transparent;
   height: 50px;
   position: absolute;
   top: -41px;
@@ -149,7 +149,7 @@ body {margin:0px; background:url('images/thestory.jpg') center top no-repeat #24
   padding:8px 6px;
   font-size:17px;
   width:146px;
-  background:url('images/button.png') no-repeat;
+  background:url('../images/button.png') no-repeat;
   margin:6px 0px;
   opacity:0.8;
   color:#fff;
