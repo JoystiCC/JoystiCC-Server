@@ -10,12 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110521212143) do
+ActiveRecord::Schema.define(:version => 20110522013447) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
     t.integer  "owner_id"
-    t.integer  "start_time"
     t.integer  "end_time"
     t.string   "password"
     t.datetime "created_at"
@@ -41,10 +40,10 @@ ActiveRecord::Schema.define(:version => 20110521212143) do
 
   create_table "teams", :force => true do |t|
     t.integer  "game_id"
-    t.integer  "controller_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "leader_id"
   end
 
 end
