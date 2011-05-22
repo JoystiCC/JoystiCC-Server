@@ -44,8 +44,8 @@ class GamesController < ApplicationController
   # PUT /games/1.xml
   def update
     @game = Game.find(params[:id])
-
-    if @game.password == params[:password]
+    @player = Player.find(params[:player_id])
+    if @player.access_key == params[:access_key] && @game.owner_id == @player.id then
       @game.name = params[:name]
       @game.owner_id = params[:owner_id]
       respond_to do |format|
@@ -67,7 +67,7 @@ class GamesController < ApplicationController
   def destroy
     @game = Game.find(params[:id])
 
-    if @game.password == params[:password]
+    if @player.access_key == params[:access_key] && @game.owner_id == @player.id then
       @game.destroy
       respond_to do |format|
         format.xml  { head :ok }
