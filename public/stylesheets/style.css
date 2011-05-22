@@ -1,0 +1,167 @@
+/* HTML5 */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video { display: block; }
+mark, rp, rt, ruby, summary, time { display: inline }
+a, img {
+  outline:none;
+  border:none;
+}
+h3 {
+  display:inline-block;
+}
+h1, h2, h3, h4 {
+  
+}
+@font-face {
+    font-family: 'ChunkFive';
+    src: url('Chunkfive-webfont.eot');
+    src: url('Chunkfive-webfont.eot?#iefix') format('eot'),
+         url('Chunkfive-webfont.woff') format('woff'),
+         url('Chunkfive-webfont.ttf') format('truetype'),
+         url('Chunkfive-webfont.svg#webfont90E2uSjN') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+/* Class for clearing floats */
+.clear {clear:both;}
+
+body {margin:0px; background:url('images/thestory.jpg') center top no-repeat #242424;
+  font-family:lucida Grande, helvetica, sans-serif;
+
+}
+/**/
+.fb_like {
+  float: right;
+  margin-top: 5px;
+}
+#container {
+  background: #DDD url('images/body.png');
+  margin: 0 auto;
+  width: 960px;
+}
+#top_content {
+  width:100%;
+  height:34px;
+  background:#f2f2f2;
+}
+#top_content a {
+  background: none repeat scroll 0 0 #888888;
+  color: #F2F2F2;
+  float: left;
+  font-size: 11px;
+  margin: 7px 3px;
+  padding: 3px 6px;
+  text-decoration: none;
+}
+#top_content a:hover {
+  background:#666;
+}
+#top_content a.twitter {
+  background:#27AAE1;
+  border-radius:4px;
+  float:right;
+  margin-right:12px;
+}
+#top_content a.twitter:hover {
+  background:#2189B6;
+}
+#header {
+  background:#434345;
+  border-bottom:1px solid #888;
+}
+.clear {
+  clear:both;
+}
+.logo {
+  background: url("images/joystic_logo.png") no-repeat scroll center 5px transparent;
+  height: 114px;
+  margin: 0 auto;
+  text-align: center;
+  width: 500px;
+}
+.video {
+  border-radius:12px;
+  margin:4px 0px 60px 0px;
+}
+.video iframe {
+  border-radius:8px;
+  padding:10px;
+  background:#434345;
+  border-bottom:1px solid #888;
+  border-top:1px solid #000;
+  width:425px;
+}
+#iphone {
+  position:absolute;
+  z-index:190;
+}
+.headline {
+  color: #90C857;
+  display: block;
+  font-family: 'ChunkFive',serif;
+  font-size: 36px;
+  margin: 20px;
+  text-align: center;
+  text-shadow: 0 0 4px #000000;
+}
+#grass {
+  background: url("images/grass_texture.png") no-repeat scroll 0 0 transparent;
+  height: 50px;
+  position: absolute;
+  top: -41px;
+  width: 100%;
+}
+#lower_main {
+  background: #000;
+  height:200px;
+  position:relative;
+}
+/********** Mail Chimp Form **********/
+#mc_embed_signup {
+  border:none;
+  color: #90C857;
+  display: block;
+  font-size:14px;
+  margin-top:20px;
+}
+#mc_embed_signup * {
+  border:none;
+  padding:0px;
+  margin:0px;
+}
+#mc_embed_signup legend {
+  margin-top: 9px;
+  font-size:18px;
+  font-family: 'ChunkFive',serif;
+}
+#mc_embed_signup input {
+  padding:8px 6px;
+  font-size:17px;
+  width:98%;
+  margin:6px 0px;
+  border-radius:12px;
+  border:3px solid #000;
+}
+#mc_embed_signup input:focus {
+  border:3px solid #90C857;
+}
+#mc_embed_signup input.btn {
+  padding:8px 6px;
+  font-size:17px;
+  width:146px;
+  background:url('images/button.png') no-repeat;
+  margin:6px 0px;
+  opacity:0.8;
+  color:#fff;
+  border-radius:0px;
+}
+#mc_embed_signup input.btn:hover {
+  opacity:1.0;
+}
+footer {
+  color:#fff;
+  background:#C4C9BE;
+  height:18px;
+  font-size:11px;
+  padding:8px 6px;
+}
