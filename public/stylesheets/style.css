@@ -133,6 +133,8 @@ body {margin:0px; background:url('../images/thestory.jpg') center top no-repeat 
   margin-top: 9px;
   font-size:18px;
   font-family: 'ChunkFive',serif;
+  font-weight: normal;
+  letter-spacing: 1px;
 }
 #mc_embed_signup input {
   padding:8px 6px;
