@@ -21,6 +21,11 @@
 <script src="https://gist.github.com/985116.js?file=gistfile1.json"></script>
 <h2>Response</h2>
 <script src="https://gist.github.com/985117.js?file=gistfile1.json"></script>
+<br><br>
+<h1>Add Score Points to a Player</h1>
+<h2>POST to http://joysti.cc/players/{player id}/score.json - <b>leader_id</b>, <b>access_key</b>, and <b>points</b> are required where access_key is the key for the team leader and the player is on this leader's team</h2>
+<script src="https://gist.github.com/985135.js?file=gistfile1.json"></script>
+<h2>Response is Header 200 OK if successful, 401 Unauthorized if access_key is incorrect or if leader does not lead player's team</h2>
 <br><br><hr><br><br>
 <h1>Create a Team</h1>
 <h2>POST to http://joysti.cc/teams.json - <b>game_password</b>, <b>game_id</b>, <b>name</b>, and <b>controller_id</b> are required - <b>controller_id</b> must reference a valid Player and <b>game_id</b> must reference a valid Game</h2>
