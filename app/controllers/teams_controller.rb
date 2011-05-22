@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.xml
   def show
     @team = Team.find(params[:id])
-    @team[:score] = @team.playerscores.sum(:points)
+    @team[:score] = @team.player_scores.sum(:points)
     respond_to do |format|
       format.xml  { render :xml => @team, :include => :players }
       format.json  { render :json => @team, :include => :players }
