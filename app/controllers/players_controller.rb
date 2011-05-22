@@ -80,6 +80,28 @@ class PlayersController < ApplicationController
     end
   end
 
+  def score
+    @player = Player.find(params[:id])
+    @leader = Player.find(params[:leader_id])
+    if @player.team && @player.team.leader_id == @leader.id then
+      @playerscore = PlayerScore.new
+      @playerscore.points = params[:points]
+      @playerscore.team_id = @player.team_id
+      @playerscore.player_id = @player.id
+      respond_to do |format|
+        if @playerscore.save
+          format.xml  { head :ok }
+          format.json { head :ok }
+        else
+          format.xml  { render :xml => @playerscore.errors, :status => :unprocessable_entity }
+          format.json  { render :json => @playerscore.errors, :status => :unprocessable_entity }
+        end
+      end
+    else
+      head :unauthorized
+    end
+  end
+
   # DELETE /players/1
   # DELETE /players/1.xml
   def destroy

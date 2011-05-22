@@ -9,8 +9,8 @@ JoystiCC::Application.routes.draw do
 
   match 'api' => 'web#api'
 
-  match 'players/join_team/:id(.:format)' => 'players#join_team', :via => :post
-
+  match 'players/:id/join_team(.:format)' => 'players#join_team', :via => :post
+  match 'players/:id/score(.:format)' => 'players#score', :via => :post
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
