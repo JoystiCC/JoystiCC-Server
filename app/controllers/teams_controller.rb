@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.xml
   def show
     @team = Team.find(params[:id])
-
+    @team[:score] = @team.playerscores.sum(:points)
     respond_to do |format|
       format.xml  { render :xml => @team, :include => :players }
       format.json  { render :json => @team, :include => :players }
@@ -35,7 +35,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.name = params[:name]
     @team.controller_id = params[:controller_id]
-    
+
     respond_to do |format|
       if @team.save
         format.xml  { head :ok }
@@ -45,11 +45,6 @@ class TeamsController < ApplicationController
         format.json  { render :json => @team.errors, :status => :unprocessable_entity }
       end
     end
-  end
-
-  def score
-    @team = Team.find(params[:id])
-
   end
 
   # DELETE /teams/1
