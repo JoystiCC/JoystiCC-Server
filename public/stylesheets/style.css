@@ -91,7 +91,7 @@ body {margin:0px; background:url('../images/thestory.jpg') center top no-repeat 
   border-top:1px solid #000;
   width:425px;
 }
-#iphone {
+#iphone img{
   position:absolute;
   z-index:190;
 }
